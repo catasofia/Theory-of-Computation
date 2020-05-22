@@ -1,2 +1,2 @@
 # TC19_20
-TC 
+Theory of Computation
