@@ -1,0 +1,119 @@
+
+
+q0 __ __ ** halt-accept
+q0 Q_ Q_ r* q1
+q0 ** ** ** halt-reject
+
+q1 0_ 0k rr q1
+q1 1_ 1k rr q1
+q1 2_ 2k rr q1
+q1 3_ 3k rr q1
+q1 4_ 4k rr q1
+q1 5_ 5k rr q1
+q1 6_ 6k rr q1
+q1 7_ 7k rr q1
+q1 8_ 8k rr q1
+q1 9_ 9k rr q1
+
+q1 A_ A$ rr q2
+q1 ** ** ** halt-reject
+
+q2 0_ 0t rr q2
+q2 1_ 1t rr q2
+q2 2_ 2t rr q2
+q2 3_ 3t rr q2
+q2 4_ 4t rr q2
+q2 5_ 5t rr q2
+q2 6_ 6t rr q2
+q2 7_ 7t rr q2
+q2 8_ 8t rr q2
+q2 9_ 9t rr q2
+
+q2 Q_ Q_ *l q3
+q2 Y_ Y_ *l q3
+q2 N_ N_ *l q3
+q2 ** ** ** halt-reject
+
+q3 *t *t *l q3
+q3 *$ *$ *l q3
+q3 *k *k *l q3
+
+q3 Q_ Q_ rr q4
+q3 Y_ Y_ rr q4
+q3 N_ N_ rr q4
+q3 ** ** ** halt-reject
+
+q4 Yk Yk rr q4
+q4 Nk Nk rr q4
+q4 0k 0k rr q4
+q4 1k 1k rr q4
+q4 2k 2k rr q4
+q4 3k 3k rr q4
+q4 4k 4k rr q4
+q4 5k 5k rr q4
+q4 6k 6k rr q4
+q4 7k 7k rr q4
+q4 8k 8k rr q4
+q4 9k 9k rr q4
+
+q4 A$ A$ rr q5
+q4 ** ** ** halt-reject
+
+q5 0t 0t rr q5
+q5 1t 1t rr q5
+q5 2t 2t rr q5
+q5 3t 3t rr q5
+q5 4t 4t rr q5
+q5 5t 5t rr q5
+q5 6t 6t rr q5
+q5 7t 7t rr q5
+q5 8t 8t rr q5
+q5 9t 9t rr q5
+
+q5 R_ R_ r* q6
+q5 L_ L_ r* q6
+q5 S_ S_ r* q6
+q5 ** ** ** halt-reject
+
+q6 ;_ ;_ rl q7
+q6 __ __ ** halt-accept
+
+q6 ** ** ** halt-reject
+
+
+q7 *k *k *l q7
+q7 *t *t *l q7
+q7 *$ *$ *l q7
+
+q7 Q_ Q_ rr q8
+q7 ** ** ** halt-reject
+
+q8 0k 0k rr q8
+q8 1k 1k rr q8
+q8 2k 2k rr q8
+q8 3k 3k rr q8
+q8 4k 4k rr q8
+q8 5k 5k rr q8
+q8 6k 6k rr q8
+q8 7k 7k rr q8
+q8 8k 8k rr q8
+q8 9k 9k rr q8
+
+q8 A$ A$ rr q9
+q8 ** ** ** halt-reject
+
+q9 0t 0t rr q9
+q9 1t 1t rr q9
+q9 2t 2t rr q9
+q9 3t 3t rr q9
+q9 4t 4t rr q9
+q9 5t 5t rr q9
+q9 6t 6t rr q9
+q9 7t 7t rr q9
+q9 8t 8t rr q9
+q9 9t 9t rr q9
+
+q9 Q_ Q_ *l q3
+q9 Y_ Y_ *l q3
+q9 N_ N_ *l q3
+q9 ** ** ** halt-reject
