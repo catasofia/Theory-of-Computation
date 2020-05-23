@@ -1,6 +1,7 @@
-
 q0 Q__ _QQ rrr q1
+; maquina vazia ??
 
+; copia o estado inicial para 3a fita
 q1 0__ _00 rrr q1
 q1 1__ _10 rrr q1
 q1 2__ _20 rrr q1
@@ -14,6 +15,9 @@ q1 9__ _90 rrr q1
 
 q1 A__ _A_ rr* q2
 
+q1 *** *** *** halt-reject
+
+; copia a maquina para a 2a fita
 q2 0__ _0_ rr* q2
 q2 1__ _1_ rr* q2
 q2 2__ _2_ rr* q2
@@ -34,6 +38,9 @@ q2 S__ _S_ rr* q2
 q2 ;__ _;_ rr* q2
 q2 $__ ___ rll q3
 
+q2 *** *** *** halt-reject
+
+; anda 2a fita para a esquerda
 q3 *0* *0* *l* q3
 q3 *1* *1* *l* q3
 q3 *2* *2* *l* q3
@@ -53,8 +60,11 @@ q3 *L* *L* *l* q3
 q3 *S* *S* *l* q3
 q3 *;* *;* *l* q3
 
-q3 *_* *_* *** q4
+q3 *_* *_* **l q4
 
+q3 *** *** *** halt-reject
+
+; anda a 3a fita para a esquerda
 q4 **0 **0 **l q4
 q4 **1 **1 **l q4
 q4 **2 **2 **l q4
@@ -66,11 +76,137 @@ q4 **7 **7 **l q4
 q4 **8 **8 **l q4
 q4 **9 **9 **l q4
 q4 **Q **Q **l q4
-q4 **Y **Y **l q4
-q4 **N **N **l q4
+q4 **Y **Y **l halt-accept
+q4 **N **N **l halt-reject
+;q4 _** A** *** q4
 
 q4 A__ A__ *rr q5
+q4 A_$ A_$ *rr q5
+q4 __$ A_$ *rr q5
 
+q4 *** *** *** halt-reject
 
+; estado 
+q5 *QQ *QQ *rr q6
+; quando chega a YY ou NN acaba execucao maybe not necessary
+q5 *Y* *** *** halt-accept
+q5 *** *** *** halt-reject
 
+; compara o estado da 2a e da 3a pista
+q6 *00 *00 *rr q6
+q6 *11 *11 *rr q6
+q6 *22 *22 *rr q6
+q6 *33 *33 *rr q6
+q6 *44 *44 *rr q6
+q6 *55 *55 *rr q6
+q6 *66 *66 *rr q6
+q6 *77 *77 *rr q6
+q6 *88 *88 *rr q6
+q6 *99 *99 *rr q6
+q6 AA* AA$ rrr q7
+q6 *** *** *** q8
 
+; compara as palavras
+q7 _0* 00* rr* q7
+q7 00* 00* rr* q7
+q7 11* 11* rr* q7
+q7 22* 22* rr* q7
+q7 33* 33* rr* q7
+q7 44* 44* rr* q7
+q7 55* 55* rr* q7
+q7 66* 66* rr* q7
+q7 77* 77* rr* q7
+q7 88* 88* rr* q7
+q7 99* 99* rr* q7
+q7 *Q* *QQ *rr q10
+q7 *Y* *YY *rr q10
+q7 *N* *NN *rr q10
+q7 *** *** *** q8
+
+; avanca para a proxima transicao
+q8 *Q* *Q* *r* q8
+q8 *0* *0* *r* q8
+q8 *1* *1* *r* q8
+q8 *2* *2* *r* q8
+q8 *3* *3* *r* q8
+q8 *4* *4* *r* q8
+q8 *5* *5* *r* q8
+q8 *6* *6* *r* q8
+q8 *7* *7* *r* q8
+q8 *8* *8* *r* q8
+q8 *9* *9* *r* q8
+q8 *A* *A* *r* q8
+q8 *R* *R* *r* q8
+q8 *L* *L* *r* q8
+q8 *S* *S* *r* q8
+q8 *Y* *Y* *r* q8
+q8 *N* *N* *r* q8
+q8 *_* *** *** halt-reject
+q8 *;* *;* *rl q9
+
+; anda a 3a pista para a esquerda
+q9 **Q **Q *** q11
+q9 **0 **0 **l q9
+q9 **1 **1 **l q9
+q9 **2 **2 **l q9
+q9 **3 **3 **l q9
+q9 **4 **4 **l q9
+q9 **5 **5 **l q9
+q9 **6 **6 **l q9
+q9 **7 **7 **l q9
+q9 **8 **8 **l q9
+q9 **9 **9 **l q9
+q9 **$ **$ **l q9
+q9 **_ **_ **r q11
+
+; copia o novo estado
+q10 *0* *00 *rr q10
+q10 *1* *11 *rr q10
+q10 *2* *22 *rr q10
+q10 *3* *33 *rr q10
+q10 *4* *44 *rr q10
+q10 *5* *55 *rr q10
+q10 *6* *66 *rr q10
+q10 *7* *77 *rr q10
+q10 *8* *88 *rr q10
+q10 *9* *99 *rr q10
+q10 *Y* *YY *rr q10
+q10 *N* *NN *rr q10
+q10 *A* *A* l** q12
+
+; anda para a 1a fita para a esquerda para poder ler novamente
+q11 A** *** *** q5
+q11 *** *** l** q11
+
+; anda para a 1a fita para a esquerda para escrever
+q12 A** *** *** q13
+q12 *** *** l** q12
+
+; escreve nova palavra na 1a pista
+q13 *A* AA* rr* q13
+q13 *0* 00* rr* q13
+q13 *1* 11* rr* q13
+q13 *2* 22* rr* q13
+q13 *3* 33* rr* q13
+q13 *4* 44* rr* q13
+q13 *5* 55* rr* q13
+q13 *6* 66* rr* q13
+q13 *7* 77* rr* q13
+q13 *8* 88* rr* q13
+q13 *9* 99* rr* q13
+q13 *R* *R* *** q3
+q13 *S* *S* l** q15
+q13 *L* *L* l** q14
+
+; reposiona 1a fita se movimento for L
+q14 A** *** l** q15
+q14 *** *** l** q14
+
+; reposiciona 1a fita se movimento for S
+q15 _** *** *l* q16
+q15 A** *** *** q3
+q15 *** *** l** q15
+
+; escreve a esquerda na 1a fita
+q16 *A* A** *** q3
+q16 *** 0** ll* q16
