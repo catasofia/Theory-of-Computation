@@ -141,7 +141,7 @@ q8 *L* *L* *r* q8
 q8 *S* *S* *r* q8
 q8 *Y* *Y* *r* q8
 q8 *N* *N* *r* q8
-q8 *_* *** *** halt-reject
+q8 *_* *** *** halt
 q8 *;* *;* *rl q9
 
 ; anda a 3a pista para a esquerda
