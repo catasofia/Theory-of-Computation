@@ -1,4 +1,5 @@
 q0 Q__ _QQ rrr q1
+q0 $__ $__ *** halt
 ; maquina vazia ??
 
 ; copia o estado inicial para 3a fita
