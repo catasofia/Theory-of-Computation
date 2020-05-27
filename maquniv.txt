@@ -1,5 +1,5 @@
 q0 Q__ _QQ rrr q1
-q0 $__ $__ *** halt
+q0 $__ $__ *** halt    ;para abortar logo se a máquina for vazia
 ; maquina vazia ??
 
 ; copia o estado inicial para 3a fita
@@ -77,13 +77,15 @@ q4 **7 **7 **l q4
 q4 **8 **8 **l q4
 q4 **9 **9 **l q4
 q4 **Q **Q **l q4
-q4 **Y **Y **l halt-accept
+q4 **Y **Y **r q17
 q4 **N **N **l halt-reject
 ;q4 _** A** *** q4
+
 
 q4 A__ A__ *rr q5
 q4 A_$ A_$ *rr q5
 q4 __$ A_$ *rr q5
+q4 ___ A__ *rr q5     ;Aqui para escrever o A no inicio se for vazio
 
 q4 *** *** *** halt-reject
 
@@ -211,3 +213,30 @@ q15 *** *** l** q15
 ; escreve a esquerda na 1a fita
 q16 *A* A** *** q3
 q16 *** 0** ll* q16
+
+
+q17 A** A*A r*r q17
+q17 0** 0*0 r*r q17
+q17 1** 1*1 r*r q17
+q17 2** 2*2 r*r q17
+q17 3** 3*3 r*r q17
+q17 4** 4*4 r*r q17
+q17 5** 5*5 r*r q17
+q17 6** 6*6 r*r q17
+q17 7** 7*7 r*r q17
+q17 8** 8*8 r*r q17
+q17 9** 9*9 r*r q17
+q17 _** _** **l q18
+
+q18 **A **A **l q18
+q18 **0 **0 **l q18
+q18 **1 **1 **l q18
+q18 **2 **2 **l q18
+q18 **3 **3 **l q18
+q18 **4 **4 **l q18
+q18 **5 **5 **l q18
+q18 **6 **6 **l q18
+q18 **7 **7 **l q18
+q18 **8 **8 **l q18
+q18 **9 **9 **l q18
+q18 **Y **Y **r halt-accept
