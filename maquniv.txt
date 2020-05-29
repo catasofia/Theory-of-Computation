@@ -1,6 +1,5 @@
 q0 Q__ _QQ rrr q1
 q0 $__ $__ *** halt    ;para abortar logo se a máquina for vazia
-; maquina vazia ??
 
 ; copia o estado inicial para 3a fita
 q1 0__ _00 rrr q1
@@ -85,7 +84,7 @@ q4 **N **N **l halt-reject
 q4 A__ A__ *rr q5
 q4 A_$ A_$ *rr q5
 q4 __$ A_$ *rr q5
-q4 ___ A__ *rr q5     ;Aqui para escrever o A no inicio se for vazio
+q4 ___ A__ *rr q5     ;Para escrever o A se a palavra inicial for vazia
 
 q4 *** *** *** halt-reject
 
