@@ -90,8 +90,6 @@ q4 *** *** *** halt-reject
 
 ; estado 
 q5 *QQ *QQ *rr q6
-; quando chega a YY ou NN acaba execucao maybe not necessary
-q5 *Y* *** *** halt-accept
 q5 *** *** *** halt-reject
 
 ; compara o estado da 2a e da 3a pista
